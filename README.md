@@ -5,7 +5,7 @@ A Linux utility to view file content
 # Installing Cattie
 
 1. Clone the repository 
-	`git clonehttps://github.com/tanveerraza789/Cattie.git`
+	`git clone https://github.com/tanveerraza789/Cattie.git`
 2. Open the repository 
 	`cd Cattie`
 3. Change file permission to enable execution
@@ -25,5 +25,5 @@ Expected output : Content of the file up to 50 lines or end of file whichever tr
 |Flag |Usage  | Working|
 --- | --- | ---
 |l|`-l=10`|Number of lines to be displayed|
-|r|`-r`|View file from last|
-|h|`-h`|View the help message|
+|r|`-r`	|View file from last|
+|h|`-h`	|View the help message|
