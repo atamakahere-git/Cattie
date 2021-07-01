@@ -35,6 +35,9 @@ check_build_status () {
     if [[ -f "bin/cattie" ]]; then
         echo -e ${GREEN}"[*] Build status confrimed!"${WHITE}
     else
+        if [[ ! -d "bin/" ]]; then
+            mkdir -p bin
+        fi
         echo -e ${ORANGE}"[*] Catties is not build, Building cattie..."${WHITE}
         make &> /dev/null
         echo -e ${GREEN}"[*] Build success!"${WHITE}
