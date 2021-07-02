@@ -52,7 +52,7 @@ void show_help()
     help_msg += "Usage     : cattie -l=50 -r filename.txt\n";
     help_msg += "Flags :\n";
     help_msg += ":: -l=length : number of lines to be displayed on terminal\n";
-    help_msg += "             : length should be positive integer\n";
+    help_msg += "             : length should be a positive integer\n";
     help_msg += ":: -r        : Show file content from the last\n";
     help_msg += ":: -h        : Show this help message\n";
     std::cout << help_msg << std::endl;
@@ -62,7 +62,7 @@ int main(int argc, char const *argv[])
 {
     if (argc < 2)
     {
-        printf(" :: Inappropiate command line usage\n");
+        printf(" :: Inappropriate command line usage\n");
         show_help();
         return 0;
     }
@@ -78,7 +78,7 @@ int main(int argc, char const *argv[])
             {
                 if (strlen(argv[i]) < 4)
                 {
-                    printf(" :: Inappripiate command line usage\n");
+                    printf(" :: Inappropriate command line usage\n");
                     show_help();
                     return 0;
                 }
@@ -90,7 +90,7 @@ int main(int argc, char const *argv[])
                     {
                         if (!isdigit(len[j]))
                         {
-                            printf(" :: Inappripiate command line usage\n");
+                            printf(" :: Inappropriate command line usage\n");
                             show_help();
                             return 0;
                         }
