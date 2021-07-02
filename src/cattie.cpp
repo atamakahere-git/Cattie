@@ -1,24 +1,20 @@
-#include <cstdio>
-#include <cstdint>
-#include <string>
-#include <iostream>
-#include <fstream>
-#include <cstring>
-#include <algorithm>
+#include "cattie.h"
+#include "errorcodes.h"
 
-bool show_file_content(const char *filename, uint64_t length = 0, bool reverse = false)
+int cattie(const char *filename, uint64_t length = 0, bool reverse = false)
 {
     uint64_t total_lines = 0;
     std::ifstream ipfile(filename);
     if (!ipfile or !ipfile.is_open())
     {
         printf(" :: File not found or unable to read!\n");
-        return false;
+        return FILE_NOT_FOUND;
     }
     total_lines = std::count(std::istreambuf_iterator<char>(ipfile),
                              std::istreambuf_iterator<char>(), '\n');
     if (length == 0)
             length = total_lines;
+    else length = std::min(total_lines,length);
     ipfile.seekg(0,std::ios::beg);
     if (reverse)
     {
@@ -43,7 +39,7 @@ bool show_file_content(const char *filename, uint64_t length = 0, bool reverse =
         }
     }
     ipfile.close();
-    return true;
+    return 0;
 }
 
 void show_help()
@@ -56,72 +52,4 @@ void show_help()
     help_msg += ":: -r        : Show file content from the last\n";
     help_msg += ":: -h        : Show this help message\n";
     std::cout << help_msg << std::endl;
-}
-
-int main(int argc, char const *argv[])
-{
-    if (argc < 2)
-    {
-        printf(" :: Inappropriate command line usage\n");
-        show_help();
-        return 0;
-    }
-
-    uint64_t length = 0;
-    bool reverse = false;
-    const char *filename = nullptr;
-    for (int i = 1; i < argc; i++)
-    {
-        if (argv[i][0] == '-')
-        {
-            if (argv[i][1] == 'l')
-            {
-                if (strlen(argv[i]) < 4)
-                {
-                    printf(" :: Inappropriate command line usage\n");
-                    show_help();
-                    return 0;
-                }
-                else
-                {
-                    char len[10];
-                    strcpy(len, argv[i] + 3);
-                    for (size_t j = 0; j < strlen(len); j++)
-                    {
-                        if (!isdigit(len[j]))
-                        {
-                            printf(" :: Inappropriate command line usage\n");
-                            show_help();
-                            return 0;
-                        }
-                    }
-                    length = atoi(len);
-                }
-            }
-            else if (argv[i][1] == 'r')
-            {
-                reverse = true;
-            }
-            else if (argv[i][1] == 'h')
-            {
-                show_help();
-                return 0;
-            }
-        }
-        else
-        {
-            if (filename == nullptr)
-            {
-                filename = argv[i];
-            }
-            else
-            {
-                printf(" :: Multiple files are not supported\n");
-                show_help();
-                return 0;
-            }
-        }
-    }
-    show_file_content(filename, length, reverse);
-    return 0;
 }
