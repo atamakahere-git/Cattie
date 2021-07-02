@@ -17,13 +17,14 @@ A Linux utility to view file content
 # Usage
 
 ## Usage Example
-	cattie -l=50 -r filename.txt
+	cattie -l 50 -r filename.txt
 Expected output : Content of the file up to 50 lines or end of file whichever triggers before.
 ## Flags
 
 
 |Flag |Usage  | Working|
 --- | --- | ---
-|l|`-l=10`|Number of lines to be displayed|
+|l|`-l 10`|Number of lines to be displayed|
 |r|`-r`	|View file from last|
 |h|`-h`	|View the help message|
+|rl|`-rl 10`|View number of lines from last|
