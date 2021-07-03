@@ -13,9 +13,10 @@ int cattie(const char *filename, uint64_t length = 0, bool reverse = false)
     total_lines = std::count(std::istreambuf_iterator<char>(ipfile),
                              std::istreambuf_iterator<char>(), '\n');
     if (length == 0)
-            length = total_lines;
-    else length = std::min(total_lines,length);
-    ipfile.seekg(0,std::ios::beg);
+        length = total_lines;
+    else
+        length = std::min(total_lines, length);
+    ipfile.seekg(0, std::ios::beg);
     if (reverse)
     {
         uint64_t leave_lines = total_lines - length;
