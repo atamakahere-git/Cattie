@@ -4,6 +4,13 @@ A Linux utility to view file content
 
 # Installing Cattie
 
+## Installing Dependecies
+Install basic development package : 	<br>
+	1. Debian based : `sudo apt-get install build-essential`<br>
+	2. Arch based : `sudo pacman -S base-devel`<br>
+	3. RHEL Based : `dnf group install "Development Tools"`<br>
+
+## Install cattie
 1. Clone the repository 
 	`git clone https://github.com/tanveerraza789/Cattie.git`
 2. Open the repository 
